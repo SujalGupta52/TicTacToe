@@ -118,6 +118,27 @@ function Cell() {
     return {getValue, fillValue};
 }
 
+function gameBoardDOM() {
+    const initialiseGameBoard = () => {
+        const body = document.querySelector('body');
+        const cellContainer = document.createElement("div");
+        cellContainer.classList.toggle('cell-container');
+        for(let i = 0; i < 9; i++) {
+            const superCell = document.createElement('div');
+            superCell.classList.toggle('super-cell');
+            for(let j = 0; j < 9; j++) {
+                const cell = document.createElement('div');
+                cell.classList.toggle('cell');
+                superCell.appendChild(cell);
+            }
+            cellContainer.appendChild(superCell);
+        }
+        body.appendChild(cellContainer);
+    }
+
+    return {initialiseGameBoard};
+}
+
 function playGame() {
     const board = gameBoard();
     let activePlayer = 'O';
@@ -133,4 +154,5 @@ function playGame() {
     else console.log("Round Tied");
 }
 
-playGame()
+const gameBoardDOMhandler = gameBoardDOM()
+gameBoardDOMhandler.initialiseGameBoard();
