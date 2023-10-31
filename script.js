@@ -121,7 +121,7 @@ function Cell() {
 function playGame() {
     const board = gameBoard();
     let activePlayer = 'O';
-    while(board.isWon() != 'X' && board.isWon && 'O' && !board.isFilled()) {
+    while(board.isWon() != 'X' && board.isWon != 'O' && !board.isFilled()) {
         activePlayer = activePlayer == 'X' ? 'O' : 'X';
         const row = prompt(`Enter row for ${activePlayer}`);
         const column = prompt(`Enter column for ${activePlayer}`);
