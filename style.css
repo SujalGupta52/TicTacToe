@@ -22,6 +22,11 @@ body {
 	gap: 3px;
 }
 
+.super-cell.active {
+	background-color: red;
+	gap: 3px;
+}
+
 .super-cell {
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
