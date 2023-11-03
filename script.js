@@ -14,6 +14,7 @@ function gameBoard() {
     };
 
     const isWon = () => {
+        if(isFilled()) return 'tied';
         let XCount = 0;
         let OCount = 0;
         for(let i = 0; i < 3; i++) {
@@ -103,7 +104,7 @@ function gameBoard() {
         return true;
     }
 
-    return {getBoard, playTurn, isWon, printBoard, isFilled}
+    return {getBoard, playTurn, isWon, printBoard}
 }
 
 function Cell() {
@@ -118,31 +119,43 @@ function Cell() {
     return {getValue, fillValue};
 }
 
+function superGameBoard() {
+    const superGameBoard = []
+    for (let i = 0; i < 9; i++) {
+        superGameBoard[i] = gameBoard();
+    }
+}
+
 function gameBoardDOM() {
-    const initialiseGameBoard = () => {
-        const body = document.querySelector('body');
-        const cellContainer = document.createElement("div");
-        cellContainer.classList.toggle('cell-container');
+    const resetGameBoard = (board) => {
+        const cellContainer = document.querySelector('.cell-container');
         for(let i = 0; i < 9; i++) {
             const superCell = document.createElement('div');
             superCell.classList.toggle('super-cell');
+            superCell.dataset.index = i;
             for(let j = 0; j < 9; j++) {
                 const cell = document.createElement('div');
                 cell.classList.toggle('cell');
+                cell.dataset.index = j;
                 superCell.appendChild(cell);
             }
             cellContainer.appendChild(superCell);
         }
-        body.appendChild(cellContainer);
     }
 
-    return {initialiseGameBoard};
+    const setActiveGameBoard = (index) => {
+        const activeGameBoard = document.querySelector(`.super-cell[data-index="${index}"]`)
+        console.log(activeGameBoard);
+        activeGameBoard.classList.toggle('active');
+    } 
+
+    return {resetGameBoard, setActiveGameBoard};
 }
 
 function playGame() {
     const board = gameBoard();
     let activePlayer = 'O';
-    while(board.isWon() != 'X' && board.isWon != 'O' && !board.isFilled()) {
+    while(board.isWon() == null) {
         activePlayer = activePlayer == 'X' ? 'O' : 'X';
         const row = prompt(`Enter row for ${activePlayer}`);
         const column = prompt(`Enter column for ${activePlayer}`);
@@ -153,6 +166,3 @@ function playGame() {
     else if(board.isWon() == 'O') console.log('O Won');
     else console.log("Round Tied");
 }
-
-const gameBoardDOMhandler = gameBoardDOM()
-gameBoardDOMhandler.initialiseGameBoard();
