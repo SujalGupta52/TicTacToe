@@ -14,7 +14,7 @@ function gameBoard() {
     };
 
     const isWon = () => {
-        if(isFilled()) return 'tied';
+
         let XCount = 0;
         let OCount = 0;
         for(let i = 0; i < 3; i++) {
@@ -71,11 +71,11 @@ function gameBoard() {
         }
         XCount = 0;
         OCount = 0;
-        for(let i = 2; i <= 0; i--) {
-            if(board[i][i] == 'X') {
+        for(let i = 0; i < 3; i++) {
+            if(board[i][2-i] == 'X') {
                 XCount++;
             }
-            else if(board[i][i] == 'O') {
+            else if(board[i][2-i] == 'O') {
                 OCount++;
             }
         }
@@ -85,6 +85,7 @@ function gameBoard() {
         else if(OCount == 3) {
             return 'O';
         }
+        if(isFilled()) return 'tied';
         return null;
     }
 
@@ -128,7 +129,6 @@ function gameController() {
 
 function gameBoardDOM() {
     const game = gameController()
-    console.log(game.getBoard())
     const updateGameBoard = () => {
         const board = game.getBoard();
         const activePlayer = game.getActivePlayer();
@@ -141,12 +141,16 @@ function gameBoardDOM() {
                 cell.classList.toggle('cell');
                 cell.dataset.row = i;
                 cell.dataset.column = j;
-                cell.textContent = board[i][j];
+                if(board[i][j] == 'X') {
+                    cell.innerHTML = '<img src = "x-symbol.svg" >';
+                }
+                if(board[i][j] == 'O') {
+                    cell.innerHTML = '<img src = "o-symbol.svg" >';
+                }
                 cellContainer.append(cell);
             }
         }
         const cells = document.querySelectorAll('.cell-container .cell');
-        console.log(cells)
         cells.forEach(cell => {
             cell.addEventListener('click' , clickHandler);
         });
@@ -182,4 +186,4 @@ function gameBoardDOM() {
 
 }
 
-gameBoardDOM();
+gameBoardDOM()
