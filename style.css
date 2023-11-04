@@ -20,50 +20,19 @@ body {
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 	gap: 3px;
-}
-
-.super-cell.active {
-	background-color: red;
-	gap: 3px;
-}
-
-.super-cell {
-    display: grid;
-    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
-    gap: 2px;
 	background-color: gray;
-	border-left: 5px solid black;
-	border-top: 5px solid black;
-	margin: 2px;
-}
-
-.super-cell:nth-child(n + 1):nth-child(-n + 3) {
-	border-top:0;
-}
-
-.super-cell:nth-child(-n + 1) {
-	border-left:0;
-}
-
-.super-cell:nth-child(n + 4) {
-	border-left:0;
-}
-
-.super-cell:nth-child(n + 5) {
-	border-left: 5px solid black;
-}
-
-.super-cell:nth-child(n + 7) {
-	border-left:0;
-}
-
-.super-cell:nth-child(n + 8) {
-	border-left: 5px solid black;
 }
 
 .cell {
     background-color: white;
-	font-size: 2.5rem;
-    text-align: center;
+	font-size: 6rem;
+    display: flex;
+	justify-content: center;
+	align-items: center;
     font-family: monospace;
+}
+
+.player {
+	font-weight: bolder;
+	font-size: 3rem;
 }
