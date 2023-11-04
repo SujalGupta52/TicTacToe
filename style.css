@@ -15,8 +15,8 @@ body {
 	font-family: cursive;
 }
 .cell-container {
-    height: 60vh;
-    width: 60vh;
+    height: 60vw;
+    width: 60vw;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 	gap: 3px;
@@ -25,7 +25,7 @@ body {
 
 .cell {
     background-color: white;
-	font-size: 6rem;
+	font-size: 20px;
     display: flex;
 	justify-content: center;
 	align-items: center;
@@ -34,5 +34,9 @@ body {
 
 .player {
 	font-weight: bolder;
-	font-size: 3rem;
+	font-size: 35px;
+}
+
+img {
+	max-width: 80%;
 }
