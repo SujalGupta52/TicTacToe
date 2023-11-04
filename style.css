@@ -15,8 +15,8 @@ body {
 	font-family: cursive;
 }
 .cell-container {
-    height: 60vw;
-    width: 60vw;
+    height: 40vw;
+    width: 40vw;
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 	gap: 3px;
@@ -24,6 +24,7 @@ body {
 }
 
 .cell {
+	min-width: 0;
     background-color: white;
 	font-size: 20px;
     display: flex;
@@ -38,5 +39,5 @@ body {
 }
 
 img {
-	max-width: 80%;
+	max-width: 60%;
 }
