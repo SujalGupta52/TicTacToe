@@ -10,7 +10,7 @@ body {
 .header {
 	justify-self: start;
 	align-self: center;
-	font-size: 4rem;
+	font-size: max(4rem, 50px);
 	color: #2b2b2b;
 	font-family: cursive;
 }
@@ -35,7 +35,7 @@ body {
 
 .player {
 	font-weight: bolder;
-	font-size: 35px;
+	font-size: max(3rem, 50px);
 }
 
 img {
